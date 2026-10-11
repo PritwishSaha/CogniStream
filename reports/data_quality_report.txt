@@ -1,0 +1,49 @@
+
+COGNISTREAM DATA QUALITY REPORT
+================================
+
+Input Dataset: developer_events_realistic.csv
+Output Dataset: cleaned_events_realistic.csv
+
+Original Rows: 21128
+Cleaned Rows: 21128
+Removed Rows: 0
+
+Number of Columns: 8
+Unique Developers: 20
+Unique Teams: 4
+
+Remaining Duplicate Event IDs:
+0
+
+Missing Values After Cleaning:
+event_id               0
+developer_id           0
+team                   0
+timestamp              0
+event_type             0
+source                 0
+duration_minutes       0
+task_id             2156
+
+Event Distribution:
+event_type
+IDE_ACTIVE            16249
+GITHUB_COMMIT          1948
+SLACK_NOTIFICATION     1407
+TASK_SWITCH             775
+MEETING                 749
+
+Duration Summary:
+count    21128.000000
+mean         7.162296
+std          5.568680
+min          1.000000
+25%          5.000000
+50%          7.000000
+75%          9.000000
+max         45.000000
+
+Timestamp Range:
+Start: 2026-09-01 09:05:00
+End: 2026-09-30 17:56:00
