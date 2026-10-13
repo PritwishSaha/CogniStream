@@ -1,0 +1,5 @@
+team,total_events,active_developers,ide_active_events,github_commit_events,slack_notification_events,task_switch_events,meeting_events
+Frontend,5282,5,4089,492,326,182,193
+Backend,5247,5,4015,473,355,211,193
+DevOps,5309,5,4069,529,340,186,185
+Data,5290,5,4076,454,386,196,178
