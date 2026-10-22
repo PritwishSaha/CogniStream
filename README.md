@@ -1,5 +1,7 @@
 # 🧠 CogniStream
 
+##---------------------------
+
 ### Developer Productivity & Workflow Analytics Platform
 
 **CogniStream** is a data analytics project designed to analyze developer activity, coding sessions, workflow patterns, and team-level productivity using structured event data.
