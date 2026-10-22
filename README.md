@@ -1,6 +1,6 @@
 # 🧠 CogniStream
 
-##---------------------------
+## ---------------------------
 
 ### Developer Productivity & Workflow Analytics Platform
 
