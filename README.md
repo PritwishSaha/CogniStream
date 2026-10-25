@@ -1,346 +1,488 @@
-#  CogniStream
+# CogniStream — Developer Activity Analytics
 
-## ---------------------------
+<p align="center">
+  <strong>Understanding Developer Activity, Team Workflows, and IDE Session Quality Through Data Analytics</strong>
+</p>
 
-### Developer Productivity & Workflow Analytics Platform
-
-**CogniStream** is a data analytics project designed to analyze developer activity, coding sessions, workflow patterns, and team-level productivity using structured event data.
-
-The project transforms developer activity events into analytical datasets using Python, SQL, and DuckDB. The resulting data can be used to understand coding activity, session duration, task switching, interruptions, and differences in activity across development teams.
-
-The current implementation focuses on data processing, database development, SQL analytics, data validation, and preparing datasets for Power BI visualization.
+<p align="center">
+  Python • SQL • DuckDB • Pandas • Data Visualization • Power BI
+</p>
 
 ---
+
+## 📌 Project Overview
+
+**CogniStream** is a developer activity analytics project designed to transform raw developer event data into structured datasets, analytical insights, and interactive Power BI dashboards.
+
+The project uses Python for data processing, DuckDB for analytical data storage, SQL for querying and aggregation, and Power BI for reporting and visualization.
+
+It explores developer activity patterns, team-level activity distribution, IDE session characteristics, and developer-level metrics.
+
+The objective is to demonstrate an end-to-end data analytics workflow, from data ingestion and transformation to analytical reporting.
 
 ## 🎯 Project Objectives
 
-* Analyze developer activity and workflow patterns.
-* Understand coding session duration and IDE activity.
-* Examine task switching and potential workflow interruptions.
-* Compare activity across developers and teams.
-* Build a structured analytical database using DuckDB.
-* Use SQL queries and analytical views to extract insights.
-* Prepare clean, structured datasets for Power BI dashboards.
+* Process raw developer activity datasets using Python.
+* Store and analyze structured data using DuckDB.
+* Perform analytical queries using SQL.
+* Measure developer and team activity patterns.
+* Analyze IDE sessions and identify session-quality issues.
+* Export analytical datasets for Power BI.
+* Build dashboards that communicate key metrics and findings.
+* Demonstrate practical data analytics and business intelligence skills.
 
----
+## 🏗️ Project Architecture
+
+```text
+Raw Developer Activity Data
+            |
+            v
+   Python Data Processing
+      Pandas / NumPy
+            |
+            v
+      DuckDB Database
+            |
+            v
+       SQL Analytics
+            |
+            v
+    Analytical Datasets
+            |
+            v
+      Power BI Exports
+            |
+            v
+     Power BI Dashboard
+            |
+            v
+   Insights and Reporting
+```
+
+The project separates data processing, analytical storage, SQL analysis, and visualization into distinct stages.
 
 ## 🛠️ Technology Stack
 
-| Technology       | Purpose                                       |
-| ---------------- | --------------------------------------------- |
-| Python           | Data processing and database automation       |
-| Pandas           | Data manipulation and analysis                |
-| NumPy            | Numerical operations                          |
-| DuckDB           | Analytical database                           |
-| SQL              | Data exploration, aggregation, and validation |
-| Matplotlib       | Data visualization                            |
-| Seaborn          | Statistical visualization                     |
-| Jupyter Notebook | Interactive analysis                          |
-| Power BI         | Planned interactive dashboard development     |
-| Git & GitHub     | Version control and project hosting           |
+| Technology       | Purpose                                          |
+| ---------------- | ------------------------------------------------ |
+| Python           | Data processing and workflow automation          |
+| Pandas           | Data manipulation and transformation             |
+| NumPy            | Numerical operations                             |
+| DuckDB           | Analytical database and SQL execution            |
+| SQL              | Aggregation, analysis, and analytical views      |
+| Matplotlib       | Data visualization                               |
+| Seaborn          | Exploratory data visualization                   |
+| Jupyter Notebook | Exploratory analysis and experimentation         |
+| Power BI         | Interactive dashboards and business intelligence |
+| Git              | Version control                                  |
+| GitHub           | Source code hosting and project collaboration    |
 
----
+## 📊 Dataset Overview
 
-## 📊 Current Project Status
+CogniStream uses synthetic developer activity data to simulate activity across a software development organization.
 
-The project has progressed through data preparation, database development, SQL analysis, validation, and analytical data export.
+The available data represents activity during September 2026.
 
-| Component                                     | Current Status               |
-| --------------------------------------------- | ---------------------------- |
-| Project repository                            | Completed                    |
-| Python environment setup                      | Completed                    |
-| Data processing scripts                       | Implemented                  |
-| DuckDB database                               | Created                      |
-| Database tables                               | Created and populated        |
-| SQL analytical queries                        | Implemented                  |
-| Data validation                               | Completed for current checks |
-| Analytical views                              | Created                      |
-| CSV exports for Power BI                      | Generated                    |
-| Power BI dashboard                            | Next development stage       |
-| Final dashboard documentation and screenshots | Pending                      |
+### Dataset Summary
 
-*Status reflects the work completed so far, not the entire planned project.*
+| Metric                              |                Value |
+| ----------------------------------- | -------------------: |
+| Total developer events              |               21,128 |
+| Developers                          |                   20 |
+| Teams                               |                    4 |
+| IDE sessions                        |                1,226 |
+| IDE events associated with sessions |               16,249 |
+| Analysis period                     | September 1–30, 2026 |
 
----
+### Teams
 
-## 🗄️ Database Overview
+The dataset represents four teams:
 
-The project uses **DuckDB** as its analytical database.
+* Backend
+* Frontend
+* Data
+* DevOps
 
-Database file:
+Each team contains five developers in the current dataset.
 
-`cognistream.duckdb`
+### Event Types
 
-The current database contains five tables.
+The recorded event types include:
 
-| Table                      | Row Count | Description                         |
-| -------------------------- | --------: | ----------------------------------- |
-| `events`                   |    21,128 | Developer activity events           |
-| `developer_metrics`        |        20 | Developer-level metrics             |
-| `ide_sessions`             |     1,226 | IDE session records                 |
-| `ide_events_with_sessions` |    16,249 | IDE events associated with sessions |
-| `team_metrics`             |         4 | Team-level metrics                  |
+| Event Type         | Event Count |
+| ------------------ | ----------: |
+| IDE_ACTIVE         |      16,249 |
+| GITHUB_COMMIT      |       1,948 |
+| SLACK_NOTIFICATION |       1,407 |
+| TASK_SWITCH        |         775 |
+| MEETING            |         749 |
+| **Total**          |  **21,128** |
 
-These tables support event-level analysis, developer comparisons, coding-session analysis, and team-level reporting.
+These figures describe the available synthetic dataset and should be treated as analytical inputs, not real-world measurements of employee performance.
 
-### Dataset Coverage
+## 🗄️ Database and Data Processing
 
-* **Developers:** 20
-* **Teams:** 4
-* **IDE sessions:** 1,226
-* **Total activity events:** 21,128
-* **Event date range:** September 1–30, 2026
+DuckDB serves as the project's analytical database.
 
-The dataset includes activity from IDE usage, GitHub commits, Slack, task switching, and meetings.
+The local database is named:
 
-### Event Distribution
+```text
+cognistream.duckdb
+```
 
-| Event Type    |      Count | Percentage |
-| ------------- | ---------: | ---------: |
-| IDE_ACTIVE    |     16,249 |     76.91% |
-| GITHUB_COMMIT |      1,948 |      9.22% |
-| Slack         |      1,407 |      6.65% |
-| TASK_SWITCH   |        775 |      3.67% |
-| MEETING       |        749 |      3.54% |
-| **Total**     | **21,128** |   **100%** |
+It is used to store structured event data and support SQL-based analysis.
 
-*Percentages are rounded. Event names and counts should be interpreted according to the project's source data.*
+### Main Database Tables
 
----
+The project contains the following tables:
 
-## 🔍 Data Analysis Implemented
+| Table                      | Purpose                                       |
+| -------------------------- | --------------------------------------------- |
+| `events`                   | Developer activity event records              |
+| `ide_events_with_sessions` | IDE activity records associated with sessions |
+| `ide_sessions`             | Aggregated IDE session records                |
+| `developer_metrics`        | Developer-level analytical metrics            |
+| `team_metrics`             | Team-level analytical metrics                 |
 
-### 1. Event Analysis
+The database is populated through the project's Python loading workflow.
 
-The event data provides a foundation for understanding developer activity across different tools and work-related events.
+### Data Processing Workflow
 
-The current analysis includes:
+The implemented workflow includes:
 
-* Event distribution and frequency.
-* Activity patterns across the dataset.
-* Developer activity aggregation.
-* Team-level activity aggregation.
-* Structured event-level data for further analysis.
+1. Reading the available source datasets.
+2. Loading and processing data using Python.
+3. Storing data in DuckDB.
+4. Running SQL queries and analytical views.
+5. Performing session-quality checks.
+6. Exporting datasets for Power BI.
 
-### 2. Developer Metrics
+Relevant scripts include:
 
-The `developer_metrics` table contains aggregated metrics for 20 developers.
+```text
+src/
+└── database/
+    ├── load_data.py
+    ├── run_analysis.py
+    ├── export_powerbi.py
+    └── export_developer_analytics.py
 
-It provides a foundation for comparing developer activity and investigating differences in workflow patterns.
+sql/
+├── cognistream_analysis.sql
+├── cognistream_views.sql
+└── session_quality_checks.sql
+```
 
-### 3. IDE Session Analysis
+These scripts and SQL files form the main data processing and analytical workflow.
 
-The `ide_sessions` table contains 1,226 session records.
+## 🔍 Analytical Areas
 
-Session-quality validation produced the following results:
+### 1. Developer Activity Analysis
 
-| Validation Result                 |  Sessions |
-| --------------------------------- | --------: |
-| OK                                |     1,216 |
-| Zero-duration, single-event flags |        10 |
-| **Total**                         | **1,226** |
+Examines the distribution of recorded activity events and provides a basis for understanding activity patterns.
 
-The flagged records are retained as validation findings rather than automatically being treated as invalid data.
+Potential analytical dimensions include:
 
-This helps distinguish potentially unusual sessions from sessions that pass the current validation checks.
+* Event frequency
+* Activity type distribution
+* Activity over time
+* Developer-level metrics
 
-### 4. Team Activity Analysis
+### 2. Team Activity Analysis
 
-The `team_metrics` table contains aggregated metrics for four teams.
+Compares recorded activity across Backend, Frontend, Data, and DevOps.
 
-It supports team-level comparisons and provides a structured source for future Power BI visualizations.
+The analysis can help answer questions such as:
 
-### 5. SQL Analytics
+* How many events were recorded for each team?
+* Which event types occur most frequently?
+* How does task-switch activity differ between teams?
+* How does recorded activity vary over time?
 
-The current SQL analysis includes:
+Activity volume alone does not establish which team is more productive.
 
-* 12 analytical SQL queries.
-* Data validation checks.
-* Three analytical views.
-* Aggregated event and team activity.
-* IDE session quality analysis.
+### 3. IDE Session Quality Analysis
 
-These queries provide a repeatable foundation for exploring the dataset and generating reporting outputs.
+Examines IDE sessions and identifies records that require additional attention.
 
----
+The current session-quality results are:
 
-## 📁 Power BI Data Exports
+| Quality Category           |  Sessions |
+| -------------------------- | --------: |
+| OK                         |     1,216 |
+| ZERO_DURATION_SINGLE_EVENT |        10 |
+| **Total**                  | **1,226** |
 
-Three CSV files have been generated for the next stage of dashboard development.
+The resulting session quality rate is approximately **99.18%**.
 
-| File                  |   Rows | Purpose                      |
-| --------------------- | -----: | ---------------------------- |
-| `event_overview.csv`  | 21,128 | Event-level reporting        |
-| `team_activity.csv`   |      4 | Team-level comparison        |
-| `session_quality.csv` |  1,226 | IDE session quality analysis |
+The `ZERO_DURATION_SINGLE_EVENT` category identifies sessions that need to be distinguished from ordinary sessions during analysis.
 
-These exports separate the data into reporting-friendly datasets.
+### 4. Developer Analytics
 
-They can be imported into Power BI to build visualizations and interactive reports.
+Provides developer-level analytical metrics derived from the available activity and session data.
 
-**Note:** CSV export is complete. The final Power BI dashboard and its visualizations are not yet documented as completed.
+This supports exploration of differences in recorded activity across developers.
 
----
+Individual metrics should be interpreted in context. Event counts and recorded IDE activity are not direct measures of code quality, contribution value, or employee performance.
+
+### 5. Executive Insights
+
+Combines selected metrics and visualizations into a high-level reporting page.
+
+Its purpose is to communicate the main patterns found in the dataset without requiring the viewer to inspect every underlying table.
+
+## 📈 Power BI Dashboard
+
+The Power BI report is located at:
+
+```text
+powerbi/CogniStream_Analytics.pbix
+```
+
+### Dashboard Pages
+
+#### 01 — Overview
+
+Provides a high-level summary of the dataset.
+
+Key metrics include:
+
+* Total events
+* Total developers
+* Total teams
+* Total IDE sessions
+
+It also presents activity distribution and team-level comparisons.
+
+#### 02 — Team Activity
+
+Focuses on team-level activity patterns.
+
+It supports comparisons between teams and helps identify differences in event distribution and recorded task-switch activity.
+
+#### 03 — Session Quality
+
+Presents session counts and session-quality checks.
+
+The page helps distinguish sessions classified as `OK` from sessions flagged by the implemented validation rules.
+
+#### 04 — Developer Analytics
+
+Provides a developer-level view of the available analytical metrics.
+
+It supports exploration of activity differences across the 20 developers in the dataset.
+
+#### 05 — Executive Insights
+
+Summarizes selected metrics and analytical findings for a high-level audience.
+
+The objective is to make the results easier to interpret and communicate.
 
 ## 📂 Project Structure
-
-The project uses separate locations for data, analysis, database code, SQL queries, and Power BI development.
 
 ```text
 CogniStream/
 │
 ├── data/
 │   ├── raw/
-│   └── processed/
+│   └── powerbi/
 │
 ├── notebooks/
 │
+├── powerbi/
+│   └── CogniStream_Analytics.pbix
+│
 ├── src/
 │   └── database/
+│       ├── load_data.py
+│       ├── run_analysis.py
+│       ├── export_powerbi.py
+│       └── export_developer_analytics.py
 │
 ├── sql/
+│   ├── cognistream_analysis.sql
+│   ├── cognistream_views.sql
+│   └── session_quality_checks.sql
 │
-├── powerbi/
-│
-├── reports/
-│
-├── cognistream.duckdb
-├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
-*This is a logical overview of the project organization. Refer to the actual repository for the exact filenames and current contents of each directory.*
+*This is a representative structure of the main project components. Additional files may exist in the repository.*
 
----
+## ⚙️ Setup and Execution
 
-## ⚙️ Tools and Environment
+### Prerequisites
 
-The project uses Python with a virtual environment and DuckDB for analytical processing.
+Install the following:
 
-The development environment includes:
+* Python 3.11 or a compatible Python version supported by the project's dependencies
+* Git
+* Power BI Desktop for opening and refreshing the report
 
-* Python
-* Pandas
-* NumPy
-* DuckDB
-* Matplotlib
-* Seaborn
-* Jupyter
+The project has also been developed in a Python 3.13 environment.
 
-A virtual environment helps isolate the project's Python dependencies from other projects.
+### 1. Clone the Repository
 
----
+```bash
+git clone https://github.com/PritwishSaha/CogniStream.git
+cd CogniStream
+```
 
-## 🚀 Current Workflow
+### 2. Create a Virtual Environment
 
-The implemented workflow can be summarized as follows:
+On Windows PowerShell:
+
+```powershell
+python -m venv .venv
+```
+
+Activate it:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install Dependencies
+
+If a `requirements.txt` file is present in the repository:
+
+```powershell
+pip install -r requirements.txt
+```
+
+If it is not present, install the project's required dependencies according to the imports used in its Python scripts.
+
+### 4. Load the Data
+
+Run the data loader from the project root:
+
+```powershell
+python src/database/load_data.py
+```
+
+This step requires the expected source datasets to be available at the paths configured in the script.
+
+### 5. Run the Analysis
+
+```powershell
+python src/database/run_analysis.py
+```
+
+Review the script output to verify that the analytical workflow completes successfully.
+
+### 6. Export Power BI Datasets
+
+Run the general export script:
+
+```powershell
+python src/database/export_powerbi.py
+```
+
+Run the developer analytics export:
+
+```powershell
+python src/database/export_developer_analytics.py
+```
+
+These commands assume that the DuckDB database has been created and contains the required tables.
+
+### 7. Open the Power BI Report
+
+Open:
 
 ```text
-Developer Activity Data
-          |
-          v
-   Data Processing
-          |
-          v
-    DuckDB Database
-          |
-          v
-     SQL Analysis
-          |
-          v
- Data Validation Checks
-          |
-          v
-   Analytical Views
-          |
-          v
-      CSV Exports
-          |
-          v
- Power BI Dashboard
-   (Next Development Stage)
+powerbi/CogniStream_Analytics.pbix
 ```
 
-This workflow separates data preparation, storage, analytical processing, validation, and visualization.
+in Power BI Desktop.
+
+If Power BI prompts for data source locations, configure them to match the CSV exports and paths used by the report.
+
+Refresh the report after confirming the source paths.
+
+*The setup commands document the intended execution order. A clean-environment installation and complete end-to-end run should be verified before treating the setup as fully reproducible.*
+
+## 📁 Power BI Export Files
+
+The project has generated the following analytical exports:
+
+| File                      | Purpose                           |
+| ------------------------- | --------------------------------- |
+| `event_overview.csv`      | Event-level reporting data        |
+| `team_activity.csv`       | Team activity summary             |
+| `session_quality.csv`     | Session-quality reporting data    |
+| `developer_analytics.csv` | Developer-level reporting metrics |
+
+The exports are stored in:
+
+```text
+data/powerbi/
+```
+
+The exact export columns depend on the corresponding Python and SQL implementations.
+
+## 💡 Key Findings
+
+Based on the current dataset and analytical results:
+
+* The dataset contains 21,128 recorded developer events across four teams.
+* IDE activity is the largest event category, with 16,249 records.
+* The dataset contains 20 developers and 1,226 IDE sessions.
+* The current session-quality classification identifies 1,216 sessions as `OK` and 10 as `ZERO_DURATION_SINGLE_EVENT`.
+* The five-page Power BI report provides overview, team, session, developer, and executive-level views.
+
+These findings describe the current dataset. They should not be interpreted as evidence of actual organizational productivity or employee performance.
+
+## 🚧 Remaining Work
+
+The following tasks are part of the final project review:
+
+* [ ] Confirm that local Git commits are synchronized with GitHub.
+* [ ] Run the complete pipeline from data loading to Power BI export.
+* [ ] Verify that expected record counts remain consistent after reloading.
+* [ ] Confirm that all Power BI data sources refresh successfully.
+* [ ] Add screenshots of all five dashboard pages.
+* [ ] Verify setup instructions in a clean environment.
+* [ ] Record a short project demonstration.
+* [ ] Complete the final documentation review.
+
+## 🔮 Future Improvements
+
+Possible extensions include:
+
+* Automated data quality reports.
+* Additional time-based activity analysis.
+* More detailed developer and team comparisons.
+* Scheduled data refresh workflows.
+* Automated report generation.
+* Expanded analytical views and documented business questions.
+
+These are potential improvements, not features claimed to be implemented in the current version.
+
+## ⚠️ Limitations
+
+* The project uses synthetic developer activity data.
+* Activity frequency does not directly measure productivity.
+* Session-quality classifications depend on the implemented validation rules.
+* The analysis does not establish causation between activity patterns and software development outcomes.
+* Findings are limited to the available data and selected analytical metrics.
+
+## 👨‍💻 Author
+
+**Pritwish Saha**
+
+B.Tech — Computer Science and Engineering (Artificial Intelligence and Machine Learning)
+
+* GitHub: [PritwishSaha](https://github.com/PritwishSaha)
+* LinkedIn: [Pritwish Saha](https://www.linkedin.com/in/pritwish-saha-b49604362/)
+
+## 📄 License
+
+Add a license to the repository if you intend to distribute the project under specific reuse permissions.
 
 ---
 
-## 📈 Planned Next Steps
-
-The next development stage is to turn the prepared analytical datasets into an interactive Power BI dashboard.
-
-### 1. Build the Power BI Dashboard
-
-Import the three exported CSV files into Power BI and establish the appropriate relationships, if required by the chosen report design.
-
-### 2. Create KPI Cards
-
-Potential dashboard metrics include:
-
-* Total activity events.
-* Number of developers.
-* Number of teams.
-* Total IDE sessions.
-* Session-quality results.
-
-### 3. Develop Visualizations
-
-Potential visuals include:
-
-* Event distribution by event type.
-* Activity comparison across teams.
-* Developer activity comparisons.
-* IDE session duration analysis.
-* Session-quality breakdown.
-* Workflow activity patterns.
-
-### 4. Add Interactive Filters
-
-Where the underlying data supports them, add filters for:
-
-* Date.
-* Developer.
-* Team.
-* Event type.
-
-### 5. Validate Dashboard Results
-
-Compare Power BI totals with the corresponding DuckDB tables and exported CSV files.
-
-### 6. Document the Final Implementation
-
-After the dashboard is completed, update the README with screenshots, final dashboard features, validated findings, and the completed project workflow.
-
----
-
-## 🎓 Learning Outcomes
-
-The current implementation demonstrates practical work in:
-
-* Data processing with Python.
-* Analytical database development with DuckDB.
-* SQL-based data exploration.
-* Aggregation and analytical view creation.
-* Data validation and quality checks.
-* Preparing datasets for business intelligence tools.
-* Organizing an end-to-end data analytics workflow.
-
----
-
-## 👨‍💻 Project Information
-
-**Project:** CogniStream
-**Category:** Data Analytics
-**Primary Technologies:** Python, SQL, DuckDB, Pandas
-**Visualization Tool:** Power BI — next development stage
-**Repository:** [PritwishSaha/CogniStream](https://github.com/PritwishSaha/CogniStream)
-
----
-
-## 📝 Conclusion
-
-CogniStream is being developed as a structured developer productivity and workflow analytics platform.
-
-The current implementation establishes the data-processing and analytical foundation through Python, DuckDB, SQL queries, validation checks, analytical views, and CSV exports.
-
-The next major milestone is developing the Power BI dashboard to transform these datasets into interactive visual reports that make developer activity and team workflow patterns easier to explore.
+<p align="center">
+  <strong>CogniStream — From Developer Activity Data to Analytical Insights</strong>
+</p>
