@@ -1,5 +1,7 @@
 # CogniStream — Developer Activity Analytics
 
+## -------------------------------
+
 <p align="center">
   <strong>Understanding Developer Activity, Team Workflows, and IDE Session Quality Through Data Analytics</strong>
 </p>
