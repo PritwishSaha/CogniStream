@@ -7,8 +7,40 @@
 *Understanding developer activity, team workflows, and IDE session quality through data analytics*
 
 <br>
+CogniStream includes five Power BI report pages for exploring developer activity, team metrics, session quality, and developer analytics.
 
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+1. Overview
+
+A high-level summary of developer activity, event distribution, and team metrics.
+
+
+
+
+2. Team Activity
+
+Compares recorded activity across Backend, Frontend, Data, and DevOps teams.
+
+
+
+
+3. Session Quality
+
+Summarizes IDE sessions and highlights records flagged by session-quality checks.
+
+
+
+
+4. Developer Analytics
+
+Presents developer-level activity metrics for further exploration.
+
+
+
+
+5. Executive Insights
+
+Summarizes selected project metrics and key findings in a single report page.
+## ---------------------![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![DuckDB](https://img.shields.io/badge/DuckDB-Analytics-FFF000?style=for-the-badge&logo=duckdb&logoColor=black)
 ![SQL](https://img.shields.io/badge/SQL-Queries-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Data-150458?style=for-the-badge&logo=pandas&logoColor=white)
@@ -16,6 +48,7 @@
 ![Status](https://img.shields.io/badge/Status-Final_Review-orange?style=for-the-badge)
 
 <br>
+
 
 | 📊 **21,128** | 👩‍💻 **20** | 🧩 **4** | ⏱️ **1,226** | ✅ **99.18%** |
 | :---: | :---: | :---: | :---: | :---: |
