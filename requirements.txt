@@ -1,0 +1,20 @@
+# Data Processing
+pandas
+numpy
+
+# Analytical Database
+duckdb
+
+# Data Visualization
+matplotlib
+seaborn
+
+# Jupyter Notebook
+jupyter
+ipykernel
+
+# Excel and CSV File Support
+openpyxl
+
+# Database and Data Analysis Utilities
+pyarrow
